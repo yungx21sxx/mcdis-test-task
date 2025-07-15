@@ -8,10 +8,6 @@ const selectedFile = ref([])
 const isUploading = ref(false)
 const fileWithError = ref([])
 
-const handleFilesSelected = (files) => {
-  console.log('File selected:', files)
-}
-
 const handleError = (message) => {
   console.error('Error:', message)
 }
@@ -66,8 +62,6 @@ watch(selectedFile, () => {
 })
 
 const handleCancel = () => {
-  console.log('Вызвана функция handleCancel')
-  
   if (abortController) {
     abortController.abort()
     abortController = null

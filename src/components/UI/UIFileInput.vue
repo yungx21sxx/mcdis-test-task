@@ -122,7 +122,10 @@ const handleFileChange = (event: Event) => {
   emit('update:files', selectedFiles.value)
 }
 
+const wasCancelled = ref(false)
+
 const cancelUpload = () => {
+  wasCancelled.value = true
   emit('cancel')
   emit('update:uploading', false)
 }
@@ -146,7 +149,12 @@ const triggerFileInput = () => {
 
 watch(() => props.uploading, (newValue, oldValue) => {
   if (oldValue === true && newValue === false && selectedFiles.value.length > 0) {
-    isUploaded.value = true
+    if (wasCancelled.value) {
+      isUploaded.value = false
+      wasCancelled.value = false
+    } else {
+      isUploaded.value = true
+    }
   }
 })
 </script>
