@@ -52,10 +52,4 @@
          &:not(&_focused)
             border: 1px solid $web-neutral-300
 
-
-
-
-
-
-
 </style>

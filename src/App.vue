@@ -163,10 +163,6 @@ const handleCancel = () => {
 @use '@/assets/variables' as *
 
 .container
-  max-width: 1200px
-  margin: 0 auto
-  padding: 32px
-  
   h1
     margin-bottom: 32px
     color: $web-neutral-900
@@ -202,7 +198,10 @@ section
   display: grid
   grid-template-columns: repeat(auto-fill, minmax(400px, 1fr))
   gap: 32px
-  
+
+  @media screen and (max-width: 600px)
+    grid-template-columns: 1fr
+
   &__example
     padding: 24px
     border: 1px solid $web-neutral-300
